@@ -1,0 +1,10 @@
+.idea
+dist
+node_modules
+docs/build/
+dist-es6/
+dist-modules/
+coverage/
+npm-debug.log
+.eslintcache
+npm-error.log
