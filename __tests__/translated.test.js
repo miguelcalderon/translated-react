@@ -1,12 +1,9 @@
+import Enzyme from 'enzyme'
 import React from 'react'
-import {
-  renderIntoDocument,
-  findRenderedDOMComponentWithClass,
-  findRenderedDOMComponentWithTag,
-  Simulate
-} from 'react-addons-test-utils'
-import ReactTestRenderer from 'react-test-renderer'
 import TranslatedProvider, { translated } from '../src/translated'
+import PropTypes from 'prop-types'
+import Adapter from 'enzyme-adapter-react-16'
+Enzyme.configure({ adapter: new Adapter() })
 
 describe('Translated', function () {
   it('should create provider component', function () {
@@ -18,17 +15,17 @@ describe('Translated', function () {
         textForTesting: 'Algo de texto de prueba'
       }
     }
+    const MyComponent = ({lookup: t}) => [t('textForTesting')]
+    MyComponent.propTypes = {
+      lookup: PropTypes.func.isRequired
+    }
+    const MyTranslatedComponent = translated(MyComponent)
     const MyApp = () => (
       <TranslatedProvider lang="es" defaultLang="en" langTable={langTable}>
-        {translated(<MyComponent />)}
+        <MyTranslatedComponent />
       </TranslatedProvider>
     )
-    const MyComponent = {lookup:t} => (
-      <div>{t('textForTesting')}</div>
-    )
-    const expectedRendered = ''
-    const renderer = ReactTestRenderer.create(<MyApp />)
-    console.log(renderer)
-    expect(renderer).toEqual(expectedRendered)
+    const renderer = mount(<MyApp />)
+    expect(renderer.html()).toBe('<div>Algo de texto de prueba</div>')
   })
 })
