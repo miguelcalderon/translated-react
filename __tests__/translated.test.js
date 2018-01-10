@@ -32,7 +32,7 @@ describe('Translated', function () {
     const renderer = mount(<MyApp />)
     expect(renderer.html()).toBe('<div>Algo de texto de prueba con 8 palabrasAlgo más de texto</div>')
   })
-  it('should create provider component and show term (language not available)', function () {
+  it('should create provider component and show term (languages not available)', function () {
     const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('moreText')]
     MyComponent.propTypes = {
       lookup: PropTypes.func.isRequired
@@ -45,6 +45,48 @@ describe('Translated', function () {
     )
     const renderer = mount(<MyApp />)
     expect(renderer.html()).toBe('<div>textForTestingmoreText</div>')
+  })
+  it('should create provider component and show translated text and term (default language not available)', function () {
+    const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('someMoreText')]
+    MyComponent.propTypes = {
+      lookup: PropTypes.func.isRequired
+    }
+    const MyTranslatedComponent = translated(MyComponent)
+    const MyApp = () => (
+      <TranslatedProvider lang="es" defaultLang="fr" langTable={langTable}>
+        <MyTranslatedComponent />
+      </TranslatedProvider>
+    )
+    const renderer = mount(<MyApp />)
+    expect(renderer.html()).toBe('<div>Algo de texto de prueba con 8 palabrassomeMoreText</div>')
+  })
+  it('should create provider component and show translated text and term (not available in default language)', function () {
+    const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('anyMoreText')]
+    MyComponent.propTypes = {
+      lookup: PropTypes.func.isRequired
+    }
+    const MyTranslatedComponent = translated(MyComponent)
+    const MyApp = () => (
+      <TranslatedProvider lang="es" defaultLang="en" langTable={langTable}>
+        <MyTranslatedComponent />
+      </TranslatedProvider>
+    )
+    const renderer = mount(<MyApp />)
+    expect(renderer.html()).toBe('<div>Algo de texto de prueba con 8 palabrasanyMoreText</div>')
+  })
+  it('should create provider component and show term (first term default language, second term not available in any language)', function () {
+    const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('anyMoreText')]
+    MyComponent.propTypes = {
+      lookup: PropTypes.func.isRequired
+    }
+    const MyTranslatedComponent = translated(MyComponent)
+    const MyApp = () => (
+      <TranslatedProvider lang="fr" defaultLang="en" langTable={langTable}>
+        <MyTranslatedComponent />
+      </TranslatedProvider>
+    )
+    const renderer = mount(<MyApp />)
+    expect(renderer.html()).toBe('<div>Some text for testing with 8 wordsanyMoreText</div>')
   })
   it('should create provider component and show translated text in default language (selected language not available)', function () {
     const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('moreText')]
