@@ -44,7 +44,7 @@ const MyApp = () => (
   </TranslatedProvider>
 )
 
-ReactDOM.render(MyApp, document.getElementsByTagName('body')[0])
+ReactDOM.render(<MyApp />, document.getElementsByTagName('body')[0].appendChild(document.createElement('div')))
 ```
 Texts without vars are cached.
 
