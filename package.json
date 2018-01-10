@@ -1,6 +1,6 @@
 {
   "name": "translated-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist",
   "module": "dist-es6",
   "jsnext:main": "dist-es6",
@@ -30,6 +30,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "catalog": "^3.2.3",
     "cross-env": "^5.1.3",
+    "del-cli": "^1.1.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "enzyme-to-json": "^3.2.2",
