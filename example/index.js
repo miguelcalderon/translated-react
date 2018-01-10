@@ -13,7 +13,7 @@ const langTable = {
 }
 
 class MyApp extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       language: 'es'
@@ -35,4 +35,4 @@ class MyApp extends Component {
   }
 }
 
-ReactDOM.render(<MyApp />, document.getElementsByTagName('body')[0])
+ReactDOM.render(<MyApp />, document.getElementsByTagName('body')[0].appendChild(document.createElement('div')))

@@ -1,10 +1,14 @@
 {
   "name": "translated-react",
-  "version": "1.0.0",
-  "main": "dist-modules",
+  "version": "0.0.2",
+  "main": "dist",
   "module": "dist-es6",
   "jsnext:main": "dist-es6",
   "license": "MIT",
+  "author": {
+    "name": "Miguel Calderón",
+    "email": "miguel.calderon@gmail.com"
+  },
   "dependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -15,6 +19,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -23,6 +28,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "catalog": "^3.2.3",
     "cross-env": "^5.1.3",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
@@ -43,7 +49,8 @@
     "jest": "^22.0.4",
     "jest-cli": "^22.0.4",
     "react-devtools": "^3.0.0",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "webpack": "^3.10.0"
   },
   "peerDependencies": {
     "react": ">= 15.5.1 < 17.0.0"
@@ -70,7 +77,8 @@
     "preversion": "npm run test",
     "prepublishOnly": "npm run dist:es6 && npm run dist:modules",
     "postpublish": "npm run gh-pages && npm run gh-pages:deploy",
-    "postinstall": "node lib/post_install.js"
+    "postinstall": "node lib/post_install.js",
+    "build": "webpack -p"
   },
   "pre-push": [],
   "jest": {
