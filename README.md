@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/miguelcalderon/translated-react.svg?branch=master)](https://travis-ci.org/miguelcalderon/translated-react)
+
 # translated-react - Translation management component for React
 
 This is a component for managing and using simple translations in React.js.
