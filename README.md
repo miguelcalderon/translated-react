@@ -17,28 +17,33 @@ Or:
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TranslatedProvider, { translated } from 'translated-react'
+import PropTypes from 'prop-types'
 
 const langTable = {
   en: {
-    textForTesting: 'Some text for testing'
+    moreText: 'Some more text',
+    textForTesting: 'Some text for testing with {nWords} words'
   },
   es: {
-    textForTesting: 'Algo de texto de prueba'
+    moreText: 'Algo más de texto',
+    textForTesting: 'Algo de texto de prueba con {nWords} palabras'
   }
 }
-
+const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('moreText')]
+MyComponent.propTypes = {
+  lookup: PropTypes.func.isRequired
+}
+const MyTranslatedComponent = translated(MyComponent)
 const MyApp = () => (
   <TranslatedProvider lang="es" defaultLang="en" langTable={langTable}>
-    {translated(<MyComponent />)}
+    <MyTranslatedComponent />
   </TranslatedProvider>
-)
-
-const MyComponent = props => (
-  <div>{props.lookup('textForTesting')}</div>
 )
 
 ReactDOM.render(MyApp, document.getElementsByTagName('body')[0])
 ```
+Texts without vars are cached.
+
 
 ## Test
 

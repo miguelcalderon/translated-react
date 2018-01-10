@@ -9,13 +9,15 @@ describe('Translated', function () {
   it('should create provider component', function () {
     const langTable = {
       en: {
-        textForTesting: 'Some text for testing'
+        moreText: 'Some more text',
+        textForTesting: 'Some text for testing with {nWords} words'
       },
       es: {
-        textForTesting: 'Algo de texto de prueba'
+        moreText: 'Algo más de texto',
+        textForTesting: 'Algo de texto de prueba con {nWords} palabras'
       }
     }
-    const MyComponent = ({lookup: t}) => [t('textForTesting')]
+    const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('moreText')]
     MyComponent.propTypes = {
       lookup: PropTypes.func.isRequired
     }
@@ -26,6 +28,6 @@ describe('Translated', function () {
       </TranslatedProvider>
     )
     const renderer = mount(<MyApp />)
-    expect(renderer.html()).toBe('<div>Algo de texto de prueba</div>')
+    expect(renderer.html()).toBe('<div>Algo de texto de prueba con 8 palabrasAlgo más de texto</div>')
   })
 })

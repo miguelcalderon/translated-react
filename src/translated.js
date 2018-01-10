@@ -6,22 +6,32 @@ let defaultLang
 let langTable
 let cached = {}
 
-const lookup = term => {
-  if (cached[term]) return cached[term]
-  cached[term] = langTable[lang]
+const processTermVariables = (translatedTerm, vars = {}) => {
+  let processedTerm = translatedTerm
+  Object.keys(vars).forEach(key => {
+    processedTerm = processedTerm.replace(`{${key}}`, vars[key])
+  })
+  return processedTerm
+}
+const lookup = (term, vars) => {
+  if (cached[term] && vars === undefined) return cached[term]
+  let localTerm = langTable[lang]
     ? langTable[lang][term]
-      ? langTable[lang][term]
+      ? processTermVariables(langTable[lang][term], vars)
       : langTable[defaultLang]
         ? langTable[defaultLang][term]
-          ? langTable[defaultLang][term]
+          ? processTermVariables(langTable[defaultLang][term], vars)
           : term
         : term
     : langTable[defaultLang]
       ? langTable[defaultLang][term]
-        ? langTable[defaultLang][term]
+        ? processTermVariables(langTable[defaultLang][term], vars)
         : term
       : term
-  return cached[term]
+  if (!cached[term] && vars === undefined) {
+    cached[term] = localTerm
+  }
+  return localTerm
 }
 
 const TranslatedProvider = props => {
