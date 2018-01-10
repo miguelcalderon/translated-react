@@ -4,7 +4,7 @@
 
 # translated-react - Translation management component for React
 
-Component for managing and using simple translations in React.js. Easily implement i18n with this dependency free internationalization library.
+Component for managing and using simple translations in React.js. Easily implement i18n with this dependency free internationalization library, with a minimum footprint of 1,21 KB gzipped.
 
 ## Install
 
