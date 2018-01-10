@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/miguelcalderon/translated-react.svg?branch=master)](https://travis-ci.org/miguelcalderon/translated-react)
+[![Build Status](https://travis-ci.org/miguelcalderon/translated-react.svg?branch=master)](https://travis-ci.org/miguelcalderon/translated-react) [![codecov](https://codecov.io/gh/miguelcalderon/translated-react/branch/master/graph/badge.svg)](https://codecov.io/gh/miguelcalderon/translated-react)
+
+
 
 # translated-react - Translation management component for React
 
