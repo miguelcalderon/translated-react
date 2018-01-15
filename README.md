@@ -53,7 +53,9 @@ You can change the current language with the exported function `setLang(newLang)
 
 Texts without vars are cached.
 
+
 ## Test
+
 `npm test`
 
 Or:
@@ -62,8 +64,11 @@ Or:
 
 
 ## What's new
-###0.1.0
+
+### 0.1.0
+
 * Added setLang(lang) function to update translations at runtime.
+
 
 ## License
 *translated-react* is available under MIT. See LICENSE for more details.

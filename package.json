@@ -1,6 +1,6 @@
 {
   "name": "translated-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Component for managing and using simple translations in React.js. Easily implement i18n with this dependency free internationalization library.",
   "main": "dist",
   "module": "dist-es6",
