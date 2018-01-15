@@ -1,5 +1,5 @@
 import Enzyme from 'enzyme'
-import React from 'react'
+import React, { Component } from 'react'
 import TranslatedProvider, { translated, setLang } from '../src/translated'
 import PropTypes from 'prop-types'
 import Adapter from 'enzyme-adapter-react-16'
@@ -154,5 +154,35 @@ describe('Translated', function () {
     expect(renderer.html()).toBe('<div>Algo de texto de prueba con 8 palabrasAlgo más de texto</div>')
     setLang('en')
     expect(renderer.html()).toBe('<div>Some text for testing with 8 wordsSome more text</div>')
+  })
+  it('should create provider component and show translated text [es], then after setting new language show translated text [en], then again in [en], then remove translated component', function () {
+    expect.assertions(4)
+    const MyComponent = ({lookup: t}) => [t('textForTesting', { nWords: '8' }), t('moreText')]
+    MyComponent.propTypes = {
+      lookup: PropTypes.func.isRequired
+    }
+    const MyTranslatedComponent = translated(MyComponent)
+    class MyApp extends Component {
+      constructor () {
+        super()
+        this.state = { flag: true }
+      }
+      render () {
+        return (
+          this.state.flag === true &&
+            <TranslatedProvider lang="es" defaultLang="en" langTable={langTable}>
+              <MyTranslatedComponent />
+            </TranslatedProvider>
+        )
+      }
+    }
+    const renderer = mount(<MyApp />)
+    expect(renderer.html()).toBe('<div>Algo de texto de prueba con 8 palabrasAlgo más de texto</div>')
+    setLang('en')
+    expect(renderer.html()).toBe('<div>Some text for testing with 8 wordsSome more text</div>')
+    setLang('en')
+    expect(renderer.html()).toBe('<div>Some text for testing with 8 wordsSome more text</div>')
+    renderer.setState({ flag: false })
+    expect(renderer.html()).toBe(null)
   })
 })
