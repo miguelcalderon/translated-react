@@ -46,11 +46,14 @@ const MyApp = () => (
 
 ReactDOM.render(<MyApp />, document.getElementsByTagName('body')[0].appendChild(document.createElement('div')))
 ```
+
+Currently only one TranslatedProvider component is supported; this means that, if you use two TranslatedProvider components only the last created one will have effect in setting the language, default language and translations table.
+
+You can change the current language with the exported function `setLang(newLang)`. This will trigger rerendering of the TranslatedProvider component and its children with the new language (if it's different from the current one). 
+
 Texts without vars are cached.
 
-
 ## Test
-
 `npm test`
 
 Or:
@@ -58,7 +61,10 @@ Or:
 `yarn test`
 
 
-## License
+## What's new
+###0.1.0
+* Added setLang(lang) function to update translations at runtime.
 
+## License
 *translated-react* is available under MIT. See LICENSE for more details.
 
