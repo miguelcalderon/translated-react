@@ -1,10 +1,7 @@
 coverage
 __tests__
-dist-es6
-dist-modules
 docs
 example
-lib
 node_modules
 src
 test
