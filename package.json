@@ -1,6 +1,6 @@
 {
   "name": "translated-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Component for managing and using simple translations in React.js. Easily implement i18n with this dependency free internationalization library.",
   "main": "dist",
   "module": "dist-es6",
@@ -30,6 +30,7 @@
     "catalog": "^3.2.3",
     "cross-env": "^5.1.3",
     "del-cli": "^1.1.0",
+    "electron": "^1.7.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
