@@ -1,6 +1,6 @@
 import Enzyme from 'enzyme'
 import React, { Component } from 'react'
-import TranslatedProvider, { translated, setLang } from '../src/translated'
+import TranslatedProvider, { translated, setLang } from '../src/index'
 import PropTypes from 'prop-types'
 import Adapter from 'enzyme-adapter-react-16'
 Enzyme.configure({ adapter: new Adapter() })

@@ -1,6 +1,6 @@
 {
   "name": "translated-react",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Component for managing and using simple translations in React.js. Easily implement i18n with this dependency free internationalization library.",
   "main": "dist",
   "module": "dist-es6",
@@ -10,7 +10,7 @@
     "name": "Miguel Calderón",
     "email": "miguel.calderon@gmail.com"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": ">= 15.5.1 < 17.0.0"
   },
   "devDependencies": {
