@@ -62,13 +62,13 @@ Or:
 
 `yarn test`
 
-
+<!--
 ## What's new
 
-### 0.1.0
+### 0.0.0
 
-* Added setLang(lang) function to update translations at runtime.
-
+* .
+-->
 
 ## License
 *translated-react* is available under MIT. See LICENSE for more details.
